@@ -1,0 +1,23 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+    name: xyztechnologies-dep
+spec:
+    replicas: 2
+    minReadySeconds: 45
+    strategy:
+        type: RollingUpdate
+        rollingUpdate:
+            maxUnavailable: 1
+            maxSurge: 2
+    selector:
+        matchLabels:
+            app: xyz-tech-app
+    template:
+        metadata:
+            labels:
+                app: xyz-tech-app
+        spec:
+            containers:
+                - image: vinothchandrasekaran/xyz-technologies
+                  name: app
