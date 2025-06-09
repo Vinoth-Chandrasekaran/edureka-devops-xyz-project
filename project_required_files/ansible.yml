@@ -5,7 +5,7 @@
           community.docker.docker_image:
               build:
                   path: "/home/edureka/Desktop"
-              name: docker.io/vinothchandrasekaran/abc-technologies
+              name: docker.io/vinothchandrasekaran/xyz-technologies
               #tag: test
               push: true
               source: build
@@ -14,8 +14,8 @@
               var: out
         - name: start a container
           community.docker.docker_container:
-             name: abc-application
-             image: vinothchandrasekaran/abc-technologies
+             name: xyz-application
+             image: vinothchandrasekaran/xyz-technologies
              state: started
              ports:
                  - 1234:8080
@@ -25,11 +25,11 @@
               var: out
              #- name: Deploying to kubernetes
         - name: Deploy application and service together in kubernetes
-          #command: "kubectl --kubeconfig=/home/ubuntu/kubernetes/admin.conf apply -f /home/ubuntu/edureka-devops-abc-project/project_required_files/deployment.yml"
+          #command: "kubectl --kubeconfig=/home/ubuntu/kubernetes/admin.conf apply -f /home/ubuntu/edureka-devops-xyz-project/project_required_files/deployment.yml"
           command: >
             kubectl --kubeconfig=/home/ubuntu/kubernetes/admin.conf apply
-            -f /home/ubuntu/edureka-devops-abc-project/project_required_files/deployment.yml
-            -f /home/ubuntu/edureka-devops-abc-project/project_required_files/service.yml
+            -f /home/ubuntu/edureka-devops-xyz-project/project_required_files/deployment.yml
+            -f /home/ubuntu/edureka-devops-xyz-project/project_required_files/service.yml
           register: out
         - debug:
               var: out
